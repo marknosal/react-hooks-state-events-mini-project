@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ categories, addTask }) {
+function NewTaskForm({ categories, onTaskFormSubmit }) {
 
   const [newTaskText, setNewTaskText] = useState('')
-  const [newTaskCat, setNewTaskCat] = useState('code')
+  const [newTaskCat, setNewTaskCat] = useState('Code')
 
 
 
   function handleSubmit(event) {
     event.preventDefault()
-    addTask({text: newTaskText, category: newTaskCat,})
-    setNewTaskCat('code')
+    onTaskFormSubmit({text: newTaskText, category: newTaskCat,})
+    setNewTaskCat('Code')
     setNewTaskText('')
   }
 

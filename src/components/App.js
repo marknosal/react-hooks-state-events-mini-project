@@ -11,6 +11,8 @@ function App() {
   const [selectedCategory, setSelectedCategory] = useState('All')
   const [displayedTasks, setDisplayedTasks] = useState(TASKS)
 
+  const filteredTasks = displayedTasks.filter(task => selectedCategory === 'All' || task.category === selectedCategory)
+
   function addTask(newTask) {
     setDisplayedTasks([...displayedTasks, newTask,])
   }
@@ -19,8 +21,8 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} setSelectedCategory={setSelectedCategory} selectedCategory={selectedCategory}/>
-      <NewTaskForm categories={CATEGORIES} addTask={addTask} />
-      <TaskList tasks={TASKS} selectedCategory={selectedCategory} displayedTasks={displayedTasks} setDisplayedTasks={setDisplayedTasks} />
+      <NewTaskForm categories={CATEGORIES} onTaskFormSubmit={addTask} />
+      <TaskList selectedCategory={selectedCategory} displayedTasks={displayedTasks} setDisplayedTasks={setDisplayedTasks} filter={filteredTasks} />
     </div>
   );
 }
