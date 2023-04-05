@@ -1,19 +1,10 @@
 import React from "react";
 import Task from "./Task";
 
-function TaskList({ filter, displayedTasks, setDisplayedTasks }) {
+function TaskList({ filter, onDelete }) {
   
-  console.log(displayedTasks)
-  function handleDelete(deletedTask) {
-    // console.log(event)
-    setDisplayedTasks(displayedTasks.filter((task) => {
-      if (deletedTask === task.text) {
-        return false
-      } else {
-        return true
-      }
-    }))
-  }
+  // console.log(displayedTasks)
+  
 
   
   // const filteredTasks = displayedTasks.filter(task => selectedCategory === 'All' || task.category === selectedCategory)
@@ -21,7 +12,7 @@ function TaskList({ filter, displayedTasks, setDisplayedTasks }) {
 
   return (
     <div className="tasks">
-        {filter.map((task) => <Task key={task.text} text={task.text} category={task.category} deleteTask={handleDelete} />)}
+        {filter.map((task) => <Task key={task.text} text={task.text} category={task.category} onDelete={onDelete} />)}
     </div>
   );
 }

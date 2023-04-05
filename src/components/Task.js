@@ -1,9 +1,9 @@
 import React from "react";
 
-function Task({ text, category, deleteTask }) {
+function Task({ text, category, onDelete }) {
 
   function handleDeleteClick() {
-    deleteTask(text)
+    onDelete(text)
   }
 
   return (
